@@ -1,0 +1,315 @@
+<!DOCTYPE html><html lang="en">
+
+<head>
+
+  <title>Home | gallery.nodezator.com </title>
+
+  <!-- ##### meta -->
+
+  <meta charset="utf-8"/>
+
+  <meta name="author" content="Kennedy Richard"/>
+  <meta name="keywords" content="index, gallery, database, nodezator, nodes, graph, graphs, projects, programming, Python, Python programming language"/>
+  <meta name="description" content="Find interesting node packs for the Nodezator desktop app"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+  <!-- ##### icon -->
+  <link rel="icon" href="icon.gif" type="image/gif"/>
+
+  <!-- ##### third party links/scripts -->
+
+  <!-- ### Bootstrap 5 CSS framework -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"/>
+
+  <!-- ### Font Awesome icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+
+  <!-- ### highlight.js -->
+
+  <!-- minified devibeans CSS theme for highlight.js -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/styles/devibeans.min.css"/>
+
+  <!-- highlight.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/highlight.min.js"></script>
+
+  <!-- syntax highlighting activation -->
+  <script>hljs.highlightAll();</script>
+
+  <!-- ##### local links/scripts -->
+
+  <script>
+
+function search() {
+
+  // Declare variables
+
+  var input, filter, section, card_bodies;
+
+  input = document.getElementById('myInput');
+  filter = input.value.toLowerCase();
+  section = document.getElementById("myCards");
+  card_bodies = section.getElementsByClassName('card-body');
+
+  var i, card_body, card, allText, moreStart, moreEnd, txtToSearch;
+
+  // Loop through all headers items, and hide the grandparent (card) of those
+  // which don't match the search query
+
+  for (i = 0; i < card_bodies.length; i++) {
+
+    card_body = card_bodies[i];
+
+    card = card_body.parentNode;
+
+    allText = card_body.innerText;
+
+    // get what's around "Link "
+
+    moreStart = allText.lastIndexOf("Link ");
+    moreEnd = moreStart + 5;
+
+    txtToSearch = allText.slice(0, moreStart) + allText.slice(moreEnd);
+
+    // update style.display according to search
+
+    card.style.display = (
+        txtToSearch.toLowerCase().indexOf(filter) > -1 ? "" : "none"
+    );
+
+  }
+
+}
+
+function searchTerm(term) {
+  var input = document.getElementById('myInput');
+  input.value = term;
+  search();
+}
+
+function toggleCollapsedIcon() {
+    var icon = document.getElementById('collapsed_icon');
+    var icon_class = icon.getAttribute('class');
+    var new_class = (icon_class == "fa fa-caret-right" ? "fa fa-caret-down" : "fa fa-caret-right");
+    icon.setAttribute('class', new_class);
+}
+
+  </script>
+
+</head>
+
+<body>
+
+  <!-- header -->
+
+  <header class="container-fluid p-2">
+
+    <p class="mb-1">Find interesting node packs for the Nodezator desktop app</p>
+
+    <a href="#div_to_expand" data-bs-toggle="collapse" onclick="toggleCollapsedIcon();"><i id="collapsed_icon" class="fa fa-caret-right"></i> How to add a node pack here?</a>
+
+    <div id="div_to_expand" class="collapse m-2">To have your node pack added to this node gallery/database just submit the relevant info about your node pack in <a href="https://docs.google.com/forms/d/e/1FAIpQLSd1XceOnzEeaBZcpkkXEFiAVO_5YUbd43sieQUekh1PZ8dm5A/viewform?usp=sf_link">this form</a>. Alternatively, you can also submit a pull request to the <a href="https://github.com/IndiePython/gallery.nodezator.com">gallery.nodezator.com repository</a> on github following the instructions on the README.md file. You can also <a href="mailto:kennedy@kennedyrichard.com">email me</a> (kennedy@kennedyrichard.com) if you need any help.</div>
+
+  </header>
+
+
+  <!-- Page content -->
+
+  <main class="container my-3">
+
+  <div class="mx-auto my-4" style="width:220px">
+      <img style="width:180px" src="node_gallery_logo.svg" alt="Node gallery logo"/>
+  </div>
+
+  <div class="mx-auto my-4 input-group" style="max-width:500px">
+    <input type="text" class="form-control" id="myInput" onkeyup="search();" placeholder="Filter existing packs...">
+    <button class="btn btn-secondary" onclick="searchTerm('');">Clear <i class="fa fa-remove"></i></button>
+  </div>
+
+<section id="myCards" class="d-flex flex-wrap bg-light">
+
+    <!-- ### -->
+    <div class="card p-2 m-2" style="max-width:355px">
+
+      <img class="card-img-top" src="https://i.imgur.com/lkhjel0.png" alt="small screenshot of pillow example node pack"/>
+
+      <div class="card-body">
+
+        <h4 class="card-title">Pillow example node pack</h4>
+
+        <div class="m-2">
+
+            By:&nbsp;
+
+            <a href="#" onclick="searchTerm(this.innerText);"><span class="badge rounded-pill bg-dark">Kennedy Richard</span></a> <a href="https://kennedyrichard.com"><i class="fa fa-link"></i></a>
+
+        </div>
+
+        <p class="card-text">An example node pack which uses Pillow for image editing. <a href="https://github.com/KennedyRichard/pillow_example_node_pack">Link <i class="fa fa-arrow-circle-right"></i></a></p>
+
+        <a href="#" onclick="searchTerm(this.innerText);"><span class="badge rounded-pill bg-success">Local node pack</span></a>
+
+        <a href="#" onclick="searchTerm(this.innerText);"><span class="badge rounded-pill bg-secondary">Pillow</span></a>
+        <a href="#" onclick="searchTerm(this.innerText);"><span class="badge rounded-pill bg-secondary">image editing</span></a>
+        <a href="#" onclick="searchTerm(this.innerText);"><span class="badge rounded-pill bg-secondary">example</span></a>
+
+      </div>
+
+    </div>
+
+    <!-- ### -->
+    <div class="card p-2 m-2" style="max-width:355px">
+
+      <img class="card-img-top" src="https://i.imgur.com/VEVzfZo.png" alt="small screenshot of matplotlib example node pack"/>
+
+      <div class="card-body">
+
+        <h4 class="card-title">Matplotlib example node pack</h4>
+
+        <div class="m-2">
+
+            By:&nbsp;
+
+            <a href="#" onclick="searchTerm(this.innerText);"><span class="badge rounded-pill bg-dark">Kennedy Richard</span></a> <a href="https://kennedyrichard.com"><i class="fa fa-link"></i></a>
+
+        </div>
+
+        <p class="card-text">An example node pack which uses matplotlib for data visualization. <a href="https://github.com/KennedyRichard/matplotlib_example_node_pack">Link <i class="fa fa-arrow-circle-right"></i></a></p>
+
+        <a href="#" onclick="searchTerm(this.innerText);"><span class="badge rounded-pill bg-success">Local node pack</span></a>
+
+        <a href="#" onclick="searchTerm(this.innerText);"><span class="badge rounded-pill bg-secondary">matplotlib</span></a>
+        <a href="#" onclick="searchTerm(this.innerText);"><span class="badge rounded-pill bg-secondary">data visualization</span></a>
+        <a href="#" onclick="searchTerm(this.innerText);"><span class="badge rounded-pill bg-secondary">example</span></a>
+
+      </div>
+
+    </div>
+
+    <!-- ### -->
+    <div class="card p-2 m-2" style="max-width:355px">
+
+      <img class="card-img-top" src="https://i.imgur.com/94AVbWI.png" alt="small screenshot of examples node pack"/>
+
+      <div class="card-body">
+
+        <h4 class="card-title">Examples node pack</h4>
+
+        <div class="m-2">
+
+            By:&nbsp;
+
+            <a href="#" onclick="searchTerm(this.innerText);"><span class="badge rounded-pill bg-dark">Kennedy Richard</span></a> <a href="https://kennedyrichard.com"><i class="fa fa-link"></i></a>
+
+        </div>
+
+        <p class="card-text">A node pack whose nodes are meant to be examples of how defining specific kinds of nodes/widgets. <a href="https://github.com/KennedyRichard/examples_node_pack">Link <i class="fa fa-arrow-circle-right"></i></a></p>
+
+        <a href="#" onclick="searchTerm(this.innerText);"><span class="badge rounded-pill bg-success">Local node pack</span></a>
+
+        <a href="#" onclick="searchTerm(this.innerText);"><span class="badge rounded-pill bg-secondary">widgets</span></a>
+        <a href="#" onclick="searchTerm(this.innerText);"><span class="badge rounded-pill bg-secondary">example</span></a>
+
+      </div>
+
+    </div>
+
+    <!-- ### -->
+    <div class="card p-2 m-2" style="max-width:355px">
+
+      <img class="card-img-top" src="https://i.imgur.com/gQ3BWUU.png" alt="small screenshot of mynodepack example node pack"/>
+
+      <div class="card-body">
+
+        <h4 class="card-title">mynodepack</h4>
+
+        <div class="m-2">
+
+            By:&nbsp;
+
+            <a href="#" onclick="searchTerm(this.innerText);"><span class="badge rounded-pill bg-dark">Kennedy Richard</span></a> <a href="https://kennedyrichard.com"><i class="fa fa-link"></i></a>
+
+        </div>
+
+        <p class="card-text">A node pack that can be used as a template for node packs meant to be uploaded to PyPI (installed node packs). <a href="https://github.com/KennedyRichard/mynodepack">Link <i class="fa fa-arrow-circle-right"></i></a></p>
+
+        <a href="#" onclick="searchTerm(this.innerText);"><span class="badge rounded-pill bg-primary">Installable node pack</span></a>
+
+        <a href="#" onclick="searchTerm(this.innerText);"><span class="badge rounded-pill bg-secondary">pygame</span></a>
+        <a href="#" onclick="searchTerm(this.innerText);"><span class="badge rounded-pill bg-secondary">templates</span></a>
+        <a href="#" onclick="searchTerm(this.innerText);"><span class="badge rounded-pill bg-secondary">example</span></a>
+
+      </div>
+
+    </div>
+
+    <!--
+
+    ### Node Pack Card Template
+    ###
+    ### copy and paste the <div> below right above this comment, then replace the info inside square brackets
+    ### with your own info, removing the square brackets as well; also delete the lines that start with "###"
+
+    <div class="card p-2 m-2" style="max-width:355px">
+
+      <img class="card-img-top" src="[link to a medium-sized image, 400-500px; I use 480px and host my images on imgur.com for free]" alt="small screenshot of [name of your node pack] node pack"/>
+
+      <div class="card-body">
+
+        <h4 class="card-title">[name of your node pack]</h4>
+
+        <div class="m-2">
+
+            By:&nbsp;
+
+            ### if there's more than one author, just copy and paste the <a> tag below for each new author
+            <a href="#" onclick="searchTerm(this.innerText);"><span class="badge rounded-pill bg-dark">[Your name here]</span></a> <a href="[a link to your stuff here; may be your website, email or social media]"><i class="fa fa-link"></i></a>
+
+        </div>
+
+        <p class="card-text">[Short description of your node pack]. <a href="[link to your node pack (usually github)]">Link <i class="fa fa-arrow-circle-right"></i></a></p>
+
+        ### pick one of the <a> elements bellow, according to whether your node pack is a "local" or "installable" one; delete the other <a> element;
+
+        <a href="#" onclick="searchTerm(this.innerText);"><span class="badge rounded-pill bg-success">Local node pack</span></a>
+        <a href="#" onclick="searchTerm(this.innerText);"><span class="badge rounded-pill bg-primary">Installable node pack</span></a>
+
+        ### finally, copy the <a> below for each tag you want to add to your node pack, changing the text within the <span> tag; I recommend adding one tag for each third-party library your node pack uses and a couple of additional tags explaining the purpose of your node pack, like "data visualization" or "image editing", etc.;
+
+        <a href="#" onclick="searchTerm(this.innerText);"><span class="badge rounded-pill bg-secondary">[your tage here]</span></a>
+
+      </div>
+
+    </div>
+
+    -->
+
+
+</section>
+
+
+  </main>
+
+
+  <!-- Footer -->
+
+  <footer class="container-fluid">
+
+    <div class="d-flex flex-wrap">
+
+        <div class="m-2"><span>Useful links:</span></div>
+        <a class="m-2" href="https://nodezator.com/">Nodezator homepage</a>
+        <a class="m-2" href="https://manual.nodezator.com/">Nodezator manual</a>
+        <a class="m-2" href="https://github.com/IndiePython/nodezator">Nodezator on github</a>
+
+    </div>
+
+    <p>© 2022 Kennedy Richard Silva Guerra</p>
+
+  </footer>
+
+
+<!-- bootstrap 5 bundled js+popper-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+
+</html>
